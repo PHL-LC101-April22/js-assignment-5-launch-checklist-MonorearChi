@@ -23,8 +23,10 @@ window.addEventListener("load", function () {
         let coPilotName = document.querySelector("input[name=coPilot]");
         let fuelLevel = docuement.querySelector("input[name=fuelLevel]");
         let cargoMass = document.querySelector("input[name=cargo]");
-        alert("All fields are required!");
-
+        if (pilotName.value === "" && coPilotName.value === "" || fuelLevel.value === "" && cargoMass.value === "") {
+            alert("All fields are required!");
+            event.preventDefault();
+        }
     });
 });
 
@@ -49,7 +51,9 @@ function pickPlanet(planets) {
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
-module.exports.validateInput = validateInput;
+module.exports.validateInput().validateInput = validateInput().validateInput + "Empty", "Not a Number" || "Is a Number";
 module.exports.formSubmission = formSubmission;
 module.exports.pickPlanet = pickPlanet;
 module.exports.myFetch = myFetch;
+
+console.log(validateInput().validateInput);

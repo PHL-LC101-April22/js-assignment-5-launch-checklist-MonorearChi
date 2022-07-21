@@ -1,34 +1,28 @@
 // Write your JavaScript code here!
 
 
-const { formSubmission, myFetch, addDestinationInfo, pickPlanet } = require("./scriptHelper");
+
+//const { formSubmission, myFetch, addDestinationInfo, pickPlanet } = require("./scriptHelper");
 
 window.addEventListener("load" , function() {
 
     let form = document.querySelector("form");
     form.addEventListener("submit", function (event) {
-        //event.preventDefault(); 
+        event.preventDefault(); 
 
-        let pilot= document.querySelector("input[name=pilotName]");
-        let copilot = document.querySelector("input[name=copilotName]");
-        let fuelLevel = docuement.querySelector("input[name=fuel]");
-        let cargoLevel = document.querySelector("input[name=cargoMass]");
+        let pilotInput= document.querySelector("input[name=pilotName]");
+        let pilot = pilotInput.value;
+        let copilotInput = document.querySelector("input[name=copilotName]");
+        let copilot = copilotInput.value;
+        let fuelLevelInput = docuement.querySelector("input[name=fuel]");
+        let fuelLevel = fuelLevelInput.value;
+        let cargoLevelInput = document.querySelector("input[name=cargoMass]");
+        let cargoLevel = cargoLevelInput.value;
         let list = document.getElementById("facultyItems");
-        const launchStatus = document.getElementById("launchStatus");
 
-        if (pilot.value ==="" || copilot.value === "" || fuelLevel.value === "" || cargoLevel.value === "") {
-            alert("All fields are required!");
-            event.preventDefault();
-        } else {
-            if (formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) === "Error") {
-                event.preventDefault();
-            } else { 
-                launchStatus.innerHTML = "Shuttle is ready for launch";
-                launchStatus.style.color = "green";
-                event.preventDefault();
-            };      
-            
-        };
+        formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) 
+        event.preventDefault();
+    
         //formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
     });
 
